@@ -2,10 +2,10 @@ clearvars
 close all
 
 %Data
-E=1.0e8;                   %Young Modulus (N/mm^2)
-nu=0.26;                   %Poisson's ratio (adimensional)
+E=1.0e8;                   %Young Modulus (N/mm)
+nu=0.24;                   %Poisson's ratio (adimensional)
 th=0.05;                   %thickness (mm)
-forceLoad=[114495; 0.0e0]; %(Fx,Fy) traction force (in N/mm^2)
+forceLoad=[139201; 0.0e0]; %(Fx,Fy) traction force (in N/mm^2)
 rho=1;                     %Density (kg/mm^3) (?) 
 g=9.8;                     %mm/s^2
 rg=-rho*g;  
@@ -141,7 +141,7 @@ u(freeNodes)=um;
 fprintf('********************** PART C **********************\n')
 fprintf('Now. we take into account the weight of the piece   \n')
 fprintf('*** VM(3) = %.4e\n',vonMisses(3))
-fprintf('***    Hint 3. VM(1) = %.4e\n',vonMisses(1))
+fprintf('*** Hint 3. VM(1) = %.4e\n',vonMisses(1))
 fprintf('****************************************************\n')
 
 %Graphical output: VM stress (weight is not taken into account)
