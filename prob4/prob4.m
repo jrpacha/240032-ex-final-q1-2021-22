@@ -102,7 +102,7 @@ fprintf('====================================================\n')
 fprintf('********************** PART A **********************\n')
 fprintf('Final temperature for node 311, u(311) = %.4e%sC\n',...
     u(311),char(176))
-fprintf('Hint 1. The minimum computed temperature is\n%.4e%sC\n',...
+fprintf('Hint 1. The minimum computed temperature is\n%.4e%sC\n\n',...
     min(u),char(176))
 
 %Compute the propagation waste
@@ -114,7 +114,7 @@ propagationWaste=heatFlowBot/heatFlow;
 fprintf('********************** PART B **********************\n')
 fprintf('Propagation Waste of the system: %.4e\n',...
     propagationWaste)
-fprintf('Hint 2. Q(39) = %.6e\n',QF(39))
+fprintf('Hint 2. Q(39) = %.6e\n\n',QF(39))
 
 tempCirc=24; %Starting temperature at the circular stretch of boundary
 minTempTopHintC = min(u(nodesTop)); %for Hint 3
@@ -136,10 +136,10 @@ end
 
 fprintf('********************** PART C **********************\n')
 fprintf('1st value of the temperature on the circular stretch\n')
-fprintf('that makes the min. value of u on the top boundary  \n')
-fprintf('bigger o equal to 24%sC: %.1f%sC\n',...
+fprintf('of the boundary that makes the minimal value of u on\n')
+fprintf('the top boundary bigger o equal to 24%sC: %.1f%sC\n\n',...
     char(176),tempCirc,char(176))
-fprintf('Hint 3. when the temperature is set to 30%sC,the\n',...
+fprintf('Hint 3. when the temperature is set to 30%sC, the\n',...
     char(176))
 fprintf('coldest top node has temperature %.5e%sC\n',...
     minTempTopHintC,char(176))
