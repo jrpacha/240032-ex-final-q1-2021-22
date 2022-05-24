@@ -3,19 +3,19 @@ clearvars
 close all
 
 %Data
-k1=6.0; f1=4/9;
-k2=3.0; f2=2;
+k1=12.0; f1=2;
+k2=6.0; f2=4;
 
 nodes = [0.0 ,0.0;
-    3.0, 0.0;
-    4.0, 0.0;
-    0.0, 3.0;
-    3.0, 3.0];
+    2.0, 0.0;
+    5.0, 0.0;
+    0.0, 1.0;
+    2.0, 1.0];
 
 elem = [1, 2, 5, 4;
     5, 2, 3, 0];
 
-dudy=4.0; %on the line joining nodes 4 and 5
+dudy=2.0; %on the line joining nodes 4 and 5
 q1_3=k1*dudy; 
 
 %Rectangle: elem 1 
@@ -91,7 +91,7 @@ fprintf('F(5) = %.5e\n',F(3)+G(1));
 fprintf('********************** PART D **********************\n')
 fprintf('Q1_33 = %.5e\n',Q1_33);
 fprintf('********************** PART E **********************\n')
-fprintf('U5 = %.5e\n',U5);
+fprintf('U(5) = %.5e\n',U5);
 fprintf('****************************************************\n')
 
 
