@@ -2,7 +2,7 @@ clearvars
 close all
 
 tempCirc=30.0;     %C Temp on the circle boundary on the right
-betaTop=8.53e-6;   %W/mm^2/C: convection coefficient on the top boundary
+betaTop=9.28e-6;   %W/mm^2/C: convection coefficient on the top boundary
 betaBot=2.67e-6;   %W/mm^2/C: convection coefficient on the bottom boundary
 tempInf=6.0;       %C: bulk temperature
 kc= 0.92e-3;       %W/mm/C thermal conductivity
@@ -18,7 +18,7 @@ plotElementsOld(nodes, elem, numbering);
 hold on;
 nodesTop=find(nodes(:,2)>9.99);
 nodesBot=find(nodes(:,2)< -9.99);
-nodesCirc=find(sqrt(nodes(:,1).^2+nodes(:,2).^2)<3.4);
+nodesCirc=find(sqrt(nodes(:,1).^2+nodes(:,2).^2)<3.34);
 plot(nodes(nodesTop,1),nodes(nodesTop,2),'o','markerFaceColor','red',...
     'markerSize',6)
 plot(nodes(nodesBot,1),nodes(nodesBot,2),'o','markerFaceColor','blue',...
@@ -100,9 +100,10 @@ fprintf('====================================================\n')
 fprintf('                       PROB.4                       \n')
 fprintf('====================================================\n')
 fprintf('********************** PART A **********************\n')
-fprintf('Final temperature for node 311, u(311) = %.4e\n',u(311))
-fprintf('Hint 1. The minimum computed temperature is\n%.4e\n',...
-    min(u))
+fprintf('Final temperature for node 311, u(311) = %.4e%sC\n',...
+    u(311),char(176))
+fprintf('Hint 1. The minimum computed temperature is\n%.4e%sC\n',...
+    min(u),char(176))
 
 %Compute the propagation waste
 heatFlowBot=sum(QF(nodesBot));
@@ -113,10 +114,10 @@ propagationWaste=heatFlowBot/heatFlow;
 fprintf('********************** PART B **********************\n')
 fprintf('Propagation Waste of the system: %.4e\n',...
     propagationWaste)
-fprintf('Hint 2. Q(39) = %.4e\n',QF(39))
+fprintf('Hint 2. Q(39) = %.6e\n',QF(39))
 
 tempCirc=24; %Starting temperature at the circular stretch of boundary
-tempCircMinTempTop=[];
+minTempTopHintC = min(u(nodesTop)); %for Hint 3
 while 1>0
     u(nodesCirc)=tempCirc;
     Fm=F(freeNodes)-K(freeNodes,fixedNodes)*u(fixedNodes);%here u can be 
@@ -126,7 +127,6 @@ while 1>0
     um=Km\Fm;
     u(freeNodes)=um;
     minTempTop=min(u(nodesTop));
-    tempCircMinTempTop=[tempCircMinTempTop;tempCirc,minTempTop];
     if minTempTop>=24
         break;
     else
@@ -135,14 +135,14 @@ while 1>0
 end
 
 fprintf('********************** PART C **********************\n')
-fprintf('1st.value of the temperature at the circular stretch\n')
-fprintf('of boundary that makes the minimal value of u on the\n')
-fprintf('top boundary bigger or equal to 24C: %.1f\n',...
-    tempCirc)
-fprintf('Hint 3. For this value, the coldest top node has    \n')
-fprintf('temperature %.5e\n',minTempTop)
-format long e;
-tempCircMinTempTop
+fprintf('1st value of the temperature on the circular stretch\n')
+fprintf('that makes the min. value of u on the top boundary  \n')
+fprintf('bigger o equal to 24%sC: %.1f%sC\n',...
+    char(176),tempCirc,char(176))
+fprintf('Hint 3. when the temperature is set to 30%sC,the\n',...
+    char(176))
+fprintf('coldest top node has temperature %.5e%sC\n',...
+    minTempTopHintC,char(176))
 fprintf('****************************************************\n')
 
 
