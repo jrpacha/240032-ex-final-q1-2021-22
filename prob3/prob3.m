@@ -1,7 +1,7 @@
 clearvars
 close all
 
-p=[4.17,1.29];
+p=[4.63,3.22];
 
 distP=@(x,y) sqrt((x-p(1,1)).^2+(y-p(1,2)).^2);
 
@@ -13,8 +13,14 @@ numElem=size(elem,1);
 numbering=0;
 plotElementsOld(nodes, elem, numbering);
 hold on
+
 %Select the nodes of the 4th. internal circular border
-nodesCirc=find(sqrt((nodes(:,1)-6).^2 + (nodes(:,2)-1).^2) < 0.501)
+nodesCirc1=find(sqrt((nodes(:,1)-2).^2 + (nodes(:,2)-1).^2) < 0.501);
+nodesCirc2=find(sqrt((nodes(:,1)-2).^2 + (nodes(:,2)-3).^2) < 0.501);
+nodesCirc3=find(sqrt((nodes(:,1)-6).^2 + (nodes(:,2)-3).^2) < 0.501);
+nodesCirc4=find(sqrt((nodes(:,1)-6).^2 + (nodes(:,2)-1).^2) < 0.501);
+
+nodesCirc=[nodesCirc1;nodesCirc2;nodesCirc3;nodesCirc4];
 plot(nodes(nodesCirc,1),nodes(nodesCirc,2),'o',...
     'markerFaceColor','red','markerSize',6)
 plot(p(1,1),p(1,2),'o','markerFaceColor','blue','markerSize',6)
@@ -22,7 +28,7 @@ hold off
 
 for e=1:numElem
     vertexs=nodes(elem(e,:),:);
-    [alphas, isInside]=baryCoordQuad(vertexs, p)
+    [alphas, isInside]=baryCoordQuad(vertexs, p);
     if isInside > 0
        break;
     end
@@ -49,10 +55,10 @@ fprintf('The value of Psi2(p) is, Psi2(p) = %.4e\n',alphas(2))
 fprintf('Hint 2. The interpolate distance, of the point p is \n')
 fprintf('d = %.4e\n',d)
 fprintf('********************** PART C **********************\n')
-fprintf('Minimum value of the distance function to the nodes \n')
-fprintf('of the 4th internal circular border,                \n')
-fprintf('min dC = %.4e\n',min(dCirc))
-fprintf('Hint3. The maximum value is max dC = %.4e\n',max(dCirc))
+fprintf('Minimum value of the distance function to all the nodes\n')
+fprintf('belonging to one of the four internal circular borders,\n')
+fprintf('is: %.4e\n',min(dCirc))
+fprintf('Hint3. The maximum value is: %.4e\n',max(dCirc))
 fprintf('****************************************************\n')
 
 
