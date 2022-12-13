@@ -94,7 +94,7 @@ Q=applyLoadsQuad(nodes,elem,nodLoads,Q,forceLoad);
 
 %Essential B.C.: 
 % set displacements along the hole to zero
-fixedNodes=[ndim*nodF-1; ndim*nodF];
+fixedNodes=[ndim*nodF-1, ndim*nodF];
 freeNodes=setdiff(1:ndim*numNod,fixedNodes);
 u=zeros(ndim*numNod,1); %initialize the solution to u=0
 u(fixedNodes)=0.0;
