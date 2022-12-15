@@ -69,14 +69,23 @@ for e=1:numElem
     %
     % Compute the Area of the element;
     %
-    alpha=[nodes(elem(e,2),:)-nodes(elem(e,1),:),0];
-    beta=[nodes(elem(e,4),:)-nodes(elem(e,1),:),0];  
-    gamma=cross(alpha,beta);
-    Ae=0.5*gamma(3);
-    alpha=[nodes(elem(e,4),:)-nodes(elem(e,3),:),0];
-    beta=[nodes(elem(e,2),:)-nodes(elem(e,3),:),0];  
-    gamma=cross(alpha,beta)
-    Ae=Ae+0.5*gamma(3);
+    %alpha=[nodes(elem(e,2),:)-nodes(elem(e,1),:),0];
+    %beta=[nodes(elem(e,4),:)-nodes(elem(e,1),:),0];  
+    %gamma=cross(alpha,beta);
+    nodT = [1,2,4];
+    %vertexs = [nodes(elem(e,1),:);
+    %           nodes(elem(e,2),:);
+    %           nodes(elem(e,4),:)]
+    vertexs = nodes(elem(e,nodT),:);
+    Ae = 0.5*det([[1;1;1],vertexs]);
+    %Ae=0.5*gamma(3);
+    %alpha=[nodes(elem(e,4),:)-nodes(elem(e,3),:),0];
+    %beta=[nodes(elem(e,2),:)-nodes(elem(e,3),:),0];  
+    %gamma=cross(alpha,beta)
+    %Ae=Ae+0.5*gamma(3);
+    nodT = [2,3,4];
+    vertexs = nodes(elem(e,nodT),:);
+    Ae = Ae + 0.5*det([[1;1;1],vertexs]);
     %
     % Assemble the stiffness matrices
     %       
