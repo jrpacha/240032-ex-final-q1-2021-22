@@ -17,13 +17,16 @@ vertexsTriangle = [
     ];
 
 figure
+
 subplot(1,2,1);
+
 plot(vertexsRectangle(:,1),vertexsRectangle(:,2),...
     '-o',...
     'LineWidth',2,...
     'MarkerFaceColor','black',...
     'MarkerSize',10,...
     'color','black')
+
 axis equal
 axis off
 
@@ -37,11 +40,14 @@ text(6.5,1.25,'$2$','Interpreter','LaTeX','FontSize',14,'Color','red')
 text(6.5,4.575,'$3$','Interpreter','LaTeX','FontSize',14,'Color','red')
 text(1.25,4.575,'$4$','Interpreter','LaTeX','FontSize',14,'Color','red')
 
-
 text(4.0,1.25,'$a$','Interpreter','LaTeX','FontSize',18)
 text(6.6,3.1,'$b$','Interpreter','LaTeX','FontSize',18)
 
 text(3.9,2.5,'$\Omega^{r}$','Interpreter','LaTeX','FontSize',24)
+
+text(1.5,-0.5,...
+    'Figure 2. Rectangle element','Interpreter','LaTeX','FontSize',12)
+
 
 subplot(1,2,2)
 plot(vertexsTriangle(:,1),vertexsTriangle(:,2),...
@@ -62,6 +68,8 @@ text(6.6,4.4,'$3$','Interpreter','LaTeX','FontSize',14,'Color','red')
 
 text(4.5,2.5,'$\Omega^{t}$','Interpreter','LaTeX','FontSize',24)
 
-
+text(1.25,-0.5,...
+    'Figure 3. Right triangle element','Interpreter','LaTeX','FontSize',12)
 
 print -dpng 'rectangleElement.png'
+
