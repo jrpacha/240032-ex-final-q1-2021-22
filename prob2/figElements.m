@@ -72,4 +72,3 @@ text(1.25,-0.5,...
     'Figure 3. Right triangle element','Interpreter','LaTeX','FontSize',12)
 
 print -dpng 'rectangleElement.png'
-
